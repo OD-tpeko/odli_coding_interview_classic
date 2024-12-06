@@ -35,7 +35,7 @@ You'll have the following at your disposal:
 
 ## Instructions
 
-1. Run the provided `setup.sh` script.
+1. Run the provided `setup.sh` or `setup.bat` script.
 2. Open the provided `src/read_modify_write_todos.py` file.
 3. You'll find three functions with placeholders: 
    - `read_todo_entry(connection, id)`
