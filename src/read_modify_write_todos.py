@@ -1,7 +1,6 @@
 import sqlite3
 from datetime import date
 
-import commands
 import model
 
 
@@ -11,9 +10,9 @@ def read_todo_entry(db: sqlite3.Connection, todo_id: int) -> model.ToDoEntry | N
     pass
 
 
-# Function to modify a ToDoEntry according the given command, respecting business rules
-def apply_on_todo_entry(todo: model.ToDoEntry, cmd: commands.ToDoCommand) -> None:
-    # Implement command application here
+# Function to apply the given due date to a ToDoEntry, respecting business rules
+def apply_due_on(todo: model.ToDoEntry, due_on: date) -> None:
+    # Implement due date application here
     pass
 
 
@@ -24,7 +23,7 @@ def write_todo_entry(db: sqlite3.Connection, todo: model.ToDoEntry) -> None:
 
 
 # Function that combines the glues the above functions together
-def read_write_modify_todo_entry(db: sqlite3.Connection, todo_id: int, cmd: commands.ToDoCommand):
+def read_write_modify_todo_entry(db: sqlite3.Connection, todo_id: int, due_on: date):
     # Fetch todo entry from database
     todo_entry = read_todo_entry(db, todo_id)
     # Abort if not found
@@ -32,7 +31,7 @@ def read_write_modify_todo_entry(db: sqlite3.Connection, todo_id: int, cmd: comm
         return None
 
     # Apply change on todo entry
-    apply_on_todo_entry(todo_entry, cmd)
+    apply_due_on(todo_entry, due_on)
 
     # Save todo entry back to database
     write_todo_entry(db, todo_entry)

@@ -7,3 +7,14 @@ def connect_db() -> sqlite3.Connection:
     with open("sql/schema.sql", "r") as f:
         db.executescript(f.read())
     return db
+
+
+# Setup function
+def seeded_db() -> sqlite3.Connection:
+    db = connect_db()
+
+    with open("sql/seed.sql", "r") as f:
+        db.executescript(f.read())
+
+    return db
+
